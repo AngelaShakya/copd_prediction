@@ -84,11 +84,12 @@ def main():
     input_df = pd.concat([input_df, input_df_encoded], axis=1)
     input_df = input_df.drop(columns=['Location'])
     # Prediction
-    prediction = model.predict(input_df)
-    if prediction[0] == 1:
-        st.write('Prediction: COPD Detected')
-    else:
-        st.write('Prediction: No COPD Detected')
+    if st.button('Predict COPD'):
+        prediction = model.predict(input_df)
+        if prediction[0] == 1:
+            st.write('Prediction: COPD Detected')
+        else:
+            st.write('Prediction: No COPD Detected')
 
 if __name__ == '__main__':
     main()
